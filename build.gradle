@@ -1,0 +1,59 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.4'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'fabricio.buffa'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('contextPropagationVersion', '1.1.1')
+	set('logbackEncoderVersion', "7.4")
+	set('logbackAcessVersion', "1.4.14")
+	set('openApiVersion', "2.6.0")
+}
+
+
+
+dependencies {
+
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+
+	//open api
+	implementation "org.springdoc:springdoc-openapi-starter-webflux-ui:${openApiVersion}"
+
+	// R2DBC
+	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc:2.7.0'
+
+	// MYSQL
+	implementation 'io.asyncer:r2dbc-mysql:1.0.1'
+
+	//observability
+	implementation "io.micrometer:context-propagation:${contextPropagationVersion}"
+	implementation "ch.qos.logback:logback-access:${logbackAcessVersion}"
+	implementation "net.logstash.logback:logstash-logback-encoder:${logbackEncoderVersion}"
+
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
