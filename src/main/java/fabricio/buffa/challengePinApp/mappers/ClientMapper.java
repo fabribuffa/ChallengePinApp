@@ -23,10 +23,10 @@ public class ClientMapper {
 
     public static ClientCreationResponse toResponse(ClientModel model) {
         return new ClientCreationResponse(
-                model.name(),
-                model.lastName(),
-                model.age(),
-                model.birthDate());
+                model.getName(),
+                model.getLastName(),
+                model.getAge(),
+                model.getBirthDate());
 
     }
 

@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface ClientRespository extends ReactiveCrudRepository<ClientModel, String> {
 
-    @Query("SELECT AVG(age), STDDEV(age)" +
+    @Query("SELECT AVG(age) as 'avg', STDDEV(age) as 'std'" +
             "FROM client")
     Mono<KpiModel> getKpis();
 }

@@ -1,8 +1,12 @@
 package fabricio.buffa.challengePinApp.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public record GetKpiClientsResponse(
+        @JsonProperty("edadPromedio")
         Double ageAverage,
-        Double stdAge
+        @JsonProperty("desaviacionEstandar")
+        Double ageStd
 ) {
 
 }

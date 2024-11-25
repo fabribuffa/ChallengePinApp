@@ -1,13 +1,20 @@
 package fabricio.buffa.challengePinApp.dtos;
 
-import java.time.Instant;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.time.LocalDate;
 
 public record ClientResponse(
         String id,
+        @JsonProperty("nombre")
         String name,
+        @JsonProperty("apellido")
         String lastName,
+        @JsonProperty("edad")
         Integer age,
-        Instant birthDate,
-        Instant probablyDeathDate
+        @JsonProperty("fechaNacimiento")
+        LocalDate birthDate,
+        @JsonProperty("fechaMuerteProbable")
+        LocalDate probablyDeathDate
 ) {
 }

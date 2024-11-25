@@ -11,3 +11,8 @@ spring:
     r2dbc:
       repositories:
         enabled: true
+
+spring-doc:
+  swagger-ui:
+    enabled: true
+    path: /

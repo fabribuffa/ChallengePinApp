@@ -10,8 +10,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
 
 
 @Component
@@ -36,13 +35,13 @@ public class RetrieveService {
 
     private ClientResponse calculateDeathDate(ClientModel clientModel) {
         Integer hopeOfLive = 75;
-        Instant probablyDeath = Instant.now().plus(hopeOfLive - clientModel.age(), ChronoUnit.YEARS);
+        LocalDate probablyDeath = LocalDate.now().plusYears(hopeOfLive - clientModel.getAge());
         return new ClientResponse(
-                clientModel.id(),
-                clientModel.name(),
-                clientModel.lastName(),
-                clientModel.age(),
-                clientModel.birthDate(),
+                clientModel.getId(),
+                clientModel.getName(),
+                clientModel.getLastName(),
+                clientModel.getAge(),
+                clientModel.getBirthDate(),
                 probablyDeath);
     }
 
